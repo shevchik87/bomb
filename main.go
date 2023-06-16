@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"math/rand"
+	"os"
 	"time"
 
 	"bomb/game"
@@ -21,7 +22,8 @@ func main() {
 	g, err := game.New(w, h, cntBlackHole)
 
 	if err != nil {
-		fmt.Printf("Error: %s", err.Error())
+		fmt.Fprintf(os.Stderr, "error: %v\n", err)
+		os.Exit(1)
 	}
 	g.Run()
 }
